@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import * as projectActions from '../../actions/project.action';
+
 /**
  * Dashboard component to give an overview of all user projects.
  *
@@ -10,6 +12,9 @@ import { connect } from 'react-redux';
  * @augments {Component}
  */
 class Dashboard extends Component {
+  componentDidMount() {
+    this.props.projectRequest();
+  }
   /**
    * Renders the dashboard component.
    *
@@ -30,6 +35,7 @@ class Dashboard extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
+    project: state.projects,
   };
 }
 
@@ -39,7 +45,9 @@ function mapStateToProps(state) {
  * @param {*} dispatch
  */
 function mapDisptachToProps(dispatch) {
-  return {};
+  return {
+    projectRequest: () => dispatch(projectActions.getProjects()),
+  };
 }
 
 Dashboard.propTypes = {};

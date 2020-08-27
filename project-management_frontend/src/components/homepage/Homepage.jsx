@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
 /**
  * Renders the homepage.
  *
@@ -9,4 +10,4 @@ function Homepage() {
   return <div>You need to be logged in.</div>;
 }
 
-export default Homepage;
+export default connect()(Homepage);

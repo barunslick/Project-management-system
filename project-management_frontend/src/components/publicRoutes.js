@@ -10,7 +10,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        localStorage.getItem('user') ? (
+        localStorage.getItem('token') ? (
           <Redirect to={routeUrls.DASHBOARD} />
         ) : (
           <Component {...props} />

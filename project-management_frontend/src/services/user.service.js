@@ -1,5 +1,5 @@
 import * as config from '../config';
-
+import handleResponse from '../helper/handleResponse';
 /**
  * Performs login in api endpoint.
  *
@@ -16,29 +16,10 @@ function login(email, password) {
   return fetch(`${config.API_URL}/auth/login`, request)
     .then(handleResponse)
     .then((user) => {
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', user.token);
 
       return user;
     });
-}
-
-/**
- * Checks if the respone from an api is valid and returns parsed data.
- *
- * @param {*} response
- */
-function handleResponse(response) {
-  return response.text().then((result) => {
-    const data = result && JSON.parse(result);
-
-    if (!response.ok) {
-      const error = (data && data.message) || response.statusText;
-
-      return Promise.reject(error);
-    }
-
-    return data;
-  });
 }
 
 export const userService = {
