@@ -19,13 +19,29 @@
   ```
   
 ### Set up the backend:<br>
-1. Install all the dependencies
+1. Goto backend folder
+2. Install all the dependencies
     ```
     npm install
     ```
-2. Set up the .env.development file (The default structure is given in .env.example) 
-3. Run the node app
+3. Set up the .env.development file (The default structure is given in .env.example) 
+4. Run the node app
     ```
+    npm start
+    ```
+    
+  ## FrontEnd
+ 1. Goto fronend folder
+ 2. Install all the dependencies
+    ```
+    npm install
+    ```
+3. Replace the api end point in config file ( /src/config.js ) to whatever endpoint you are running from backend
+   ``` javascript
+    export const API_URL = 'http://localhost:3001/api'; // Default
+   ```
+ 4. Start the react app
+     ```
     npm start
     ```
    
