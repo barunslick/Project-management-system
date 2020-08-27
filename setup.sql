@@ -51,5 +51,5 @@ INSERT INTO
     last_name,
     password,
     role_id)
-    VALUES('sysaadmin@gmail.com','admin','admin','$2b$10$aqbvEe0.owGGMuDdhwvxpepyPhJJ5qiX382d6q1mr5GLuopSC2z4O',1);
+    VALUES('sysadmin@gmail.com','admin','admin','$2b$10$aqbvEe0.owGGMuDdhwvxpepyPhJJ5qiX382d6q1mr5GLuopSC2z4O',1);
 
