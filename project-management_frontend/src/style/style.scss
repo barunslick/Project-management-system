@@ -1,0 +1,9 @@
+@import './base';
+
+html,
+body {
+  font-family: 'Conso', 'Courier New', monospace;
+  font-size: $default-font-size;
+  background-color: $base-color;
+  color: $white;
+}
