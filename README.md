@@ -1,8 +1,8 @@
 # Project-management-system
 
-##BackEnd
+## BackEnd
 
-###Set up the database: <br>
+### Set up the database: <br>
 1. Clone the repository
 2. Open Postgres CLI from repo's root directory
 3. Create a new database
@@ -18,7 +18,7 @@
   \i setup.sql
   ```
   
-###Set up the backend:<br>
+### Set up the backend:<br>
 1. Install all the dependencies
     ```
     npm install
