@@ -3,7 +3,6 @@ const httpStatus = require('http-status');
 
 const db = require('../helper/db');
 const logger = require('../../logger');
-const User = require('../../models/user');
 const APIError = require('../helper/APIError');
 
 const verifyToken = (req, res, next) => {

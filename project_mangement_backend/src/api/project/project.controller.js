@@ -163,10 +163,12 @@ const getAllProjects = async (req, res, next) => {
       case roles.ENGINEER: {
         const projectstResult = await db.fetchAllProjectsForUser(req.user.id);
 
-        const projects = projectstResult ? db.parseQuery(projectstResult) : [];
+        const userWithProjects = projectstResult
+          ? db.parseQuery(projectstResult)
+          : [];
 
         res.json({
-          projects,
+          projects: userWithProjects.projects,
         });
         break;
       }

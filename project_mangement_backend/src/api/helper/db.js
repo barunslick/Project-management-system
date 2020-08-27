@@ -73,11 +73,10 @@ const fetchProjectById = (projectId) =>
     require: false,
   });
 
-const fetchUserFromProject = (projectId, userId) => {
-  return ProjectUser.where({ project_id: projectId, user_id: userId }).fetch({
+const fetchUserFromProject = (projectId, userId) =>
+  ProjectUser.where({ project_id: projectId, user_id: userId }).fetch({
     require: false,
   });
-};
 
 const fetchAllUsersFromProject = (projectId) =>
   ProjectUser.where({ project_id: projectId }).fetchAll({
