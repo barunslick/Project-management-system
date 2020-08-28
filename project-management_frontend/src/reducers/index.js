@@ -25,6 +25,7 @@ const rootReducer = (state, action) => {
     storage.removeItem('persist:root');
     state = undefined;
   }
+  
   return appReducer(state, action);
 };
 
