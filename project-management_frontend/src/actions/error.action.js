@@ -4,8 +4,8 @@ export const CLEAR_LOGIN_ERROR = 'CLEAR_LOGIN_ERROR';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
 export const CLEAR_REGISTER_ERROR = 'CLEAR_REGISTER_ERROR';
 
-export const PROJECT_ERROR = 'LOGIN_ERROR';
-export const CLEAR_PROJECT_ERROR = 'CLEAR_LOGIN_ERROR';
+export const PROJECT_ERROR = 'PROJECT_ERROR';
+export const CLEAR_PROJECT_ERROR = 'CLEAR_PROJECT_ERROR';
 
 export const loginError = (msg) => ({
   type: LOGIN_ERROR,

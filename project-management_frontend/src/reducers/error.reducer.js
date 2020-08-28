@@ -1,3 +1,4 @@
+import * as userActions from '../actions/user.action';
 import * as errorActions from '../actions/error.action';
 
 const INITIAL_STATE = { authenticationError: {}, projectError: {} };
@@ -45,6 +46,11 @@ function errorActionReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         registerError: {},
+      };
+
+    case userActions.LOGOUT:
+      return {
+        ...INITIAL_STATE,
       };
 
     default:

@@ -45,10 +45,16 @@ function userActionReducer(state = INITIAL_STATE, action) {
         ...state,
         registering: false,
       };
+
     case userActions.REGISTER_REQUEST_FAIL:
       return {
         ...state,
         registering: false,
+      };
+
+    case userActions.LOGOUT:
+      return {
+        ...INITIAL_STATE,
       };
 
     default:

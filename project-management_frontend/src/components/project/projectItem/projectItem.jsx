@@ -47,7 +47,7 @@ export class ProjectItem extends Component {
           {currentProject && currentProject.description && (
             <div>
               <p className="ProjectItem__header">
-                Project:{currentProject.name}
+                Project: {currentProject.name}
               </p>
               <p className="ProjectItem__manager">
                 Project Manager: {currentProject.manager.email}

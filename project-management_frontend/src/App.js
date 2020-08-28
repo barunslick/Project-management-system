@@ -9,6 +9,7 @@ import Homepage from './components/homepage/Homepage';
 import Register from './components/register/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import ProjectItem from './components/project/projectItem/projectItem';
+import CreateProject from './components/project/createProject/CreateProject';
 
 import { history } from './helper/history.js';
 import * as routeUrls from './constants/routeUrls';
@@ -24,7 +25,7 @@ import './App.scss';
 function App() {
   return (
     <Router history={history}>
-      <div className="MainAppWrapper">
+      <div className="container">
         <Switch>
           <PublicRoute path={routeUrls.BASE} component={Homepage} exact />
           <PublicRoute path={routeUrls.LOGIN} component={Login} exact />
@@ -36,6 +37,7 @@ function App() {
               exact
             />
             <PrivateRoute path="/register" component={Register} exact />
+            <PrivateRoute path="/createP" component={CreateProject} exact />
             <PrivateRoute
               path={routeUrls.ALL_PROJECTS}
               component={Project}

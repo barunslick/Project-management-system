@@ -7,7 +7,7 @@ import handleResponse from '../helper/handleResponse';
  * @param {String} email
  * @param {String} password
  */
-function login(email, password) {
+const login = (email, password) => {
   const request = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -21,14 +21,14 @@ function login(email, password) {
 
       return user;
     });
-}
+};
 
 /**
  * To register a new user.
  *
  * @param {Object} user
  */
-function register(user) {
+const register = (user) => {
   const auth = authHeader();
 
   const requestOptions = {
@@ -40,9 +40,14 @@ function register(user) {
   return fetch(`${config.API_URL}/auth/register`, requestOptions).then(
     handleResponse
   );
-}
+};
+
+const logout = () => {
+  localStorage.removeItem('token');
+};
 
 export const userService = {
   login,
   register,
+  logout,
 };

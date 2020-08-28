@@ -1,8 +1,11 @@
+import * as userActions from '../actions/user.action';
 import * as projectActions from '../actions/project.action';
 
 const INITIAL_STATE = {
   projectsList: {},
   currentProject: {},
+  fetchingProject: true,
+  creatingProject: true,
 };
 
 /**
@@ -23,7 +26,6 @@ function projectActionReducer(state = INITIAL_STATE, action) {
     case projectActions.PROJECT_REQUEST_SUCCESS:
       return {
         ...state,
-        fetchedproject: false,
         fetchingProject: false,
         projectsList: { ...action.payload.projects },
       };
@@ -31,7 +33,6 @@ function projectActionReducer(state = INITIAL_STATE, action) {
     case projectActions.PROJECT_REQUEST_BY_ID_SUCCESS:
       return {
         ...state,
-        fetchedproject: false,
         fetchingProject: false,
         currentProject: { ...action.payload.project },
       };
@@ -40,6 +41,29 @@ function projectActionReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         fetchingProject: false,
+      };
+
+    case projectActions.PROJECT_CREATE:
+      return {
+        ...state,
+        creatingProject: true,
+      };
+
+    case projectActions.PROJECT_CREATE_SUCCESS:
+      return {
+        ...state,
+        creatingProject: false,
+      };
+
+    case projectActions.PROJECT_CREATE_FAIL:
+      return {
+        ...state,
+        creatingProject: false,
+      };
+
+    case userActions.LOGOUT:
+      return {
+        ...INITIAL_STATE,
       };
 
     default:

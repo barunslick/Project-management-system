@@ -11,6 +11,8 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_REQUEST_SUCCESS = 'REGISTER_REQUEST_SUCCESS';
 export const REGISTER_REQUEST_FAIL = 'REGISTER_REQUEST_FAIL';
 
+export const LOGOUT = 'LOGOUT';
+
 export const loginRequest = (email) => ({
   type: LOGIN_REQUEST,
   payload: email,
@@ -39,13 +41,17 @@ export const registerRequestFail = (msg) => ({
   payload: msg,
 });
 
+export const logout = () => ({
+  type: LOGOUT,
+});
+
 /**
  * Thunk middleware to handle login request.
  *
  * @param {String} email
  * @param {String} password
  */
-export function login(email, password) {
+export const login = (email, password) => {
   return async (dispatch) => {
     dispatch(loginRequest(email));
     try {
@@ -60,14 +66,14 @@ export function login(email, password) {
       dispatch(loginRequestFail(err));
     }
   };
-}
+};
 
 /**
  * Thunk middleware to handle login request.
  *
  * @param {Object} user
  */
-export function register(user) {
+export const register = (user) => {
   return async (dispatch) => {
     dispatch(registerRequest(user));
     try {
@@ -80,4 +86,9 @@ export function register(user) {
       dispatch(registerRequestFail(err));
     }
   };
-}
+};
+
+export const userLogout = () => {
+  userService.logout();
+  history.push('/login');
+};
