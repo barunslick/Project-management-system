@@ -7,6 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 
 import GoBack from '../../common/goBack/GoBack';
 
+import { history } from '../../../helper/history';
 import * as routeUrls from '../../../constants/routeUrls';
 import * as projectActions from '../../../actions/project.action';
 
@@ -32,6 +33,12 @@ class CreateProject extends Component {
       projectManagerEmail: '',
       submitted: false,
     };
+
+    const role = props.user.userDetails.role;
+
+    if (role !== 'admin') {
+      history.push('/dashboard');
+    }
   }
 
   /**
@@ -147,6 +154,7 @@ class CreateProject extends Component {
  */
 function mapStateToProps(state) {
   return {
+    user: state.user,
     error: state.error,
   };
 }
@@ -163,6 +171,7 @@ function mapDisptachToProps(dispatch) {
 }
 
 CreateProject.propTypes = {
+  user: PropTypes.object,
   error: PropTypes.object,
   createProject: PropTypes.func,
 };

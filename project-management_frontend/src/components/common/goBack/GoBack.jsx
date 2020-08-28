@@ -14,7 +14,7 @@ function GoBack(props) {
   return (
     <div className="GoBack">
       <Link to={props.link}>
-        {'\u2190'}
+        {'\u2190  '}
         {props.children}
       </Link>
     </div>

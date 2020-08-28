@@ -59,8 +59,27 @@ const createProject = (project) => {
     });
 };
 
+/**
+ * Gets the project with its relevant project manager.
+ *
+ * @param {Number} projectId
+ */
+const getUsersFromProject = (projectId) => {
+  const request = {
+    method: 'GET',
+    headers: authHeader(),
+  };
+
+  return fetch(`${config.API_URL}/project/${projectId}/user`, request)
+    .then(handleResponse)
+    .then((user) => {
+      return user;
+    });
+};
+
 export const projectService = {
   createProject,
   getProjectById,
   getProjectsForUser,
+  getUsersFromProject,
 };

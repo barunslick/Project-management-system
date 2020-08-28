@@ -10,3 +10,16 @@
     font-size: 16px;
   }
 }
+
+.ProjectMembers {
+  margin-top: 60px;
+
+  @include e(heading) {
+    font-size: 26px;
+  }
+
+  @include e(user) {
+    line-height: 1.4;
+    font-size: 18px;
+  }
+}

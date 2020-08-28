@@ -36,8 +36,18 @@ function App() {
               component={Dashboard}
               exact
             />
-            <PrivateRoute path="/register" component={Register} exact />
-            <PrivateRoute path="/createP" component={CreateProject} exact />
+            <PrivateRoute
+              path={routeUrls.REGISTER}
+              component={Register}
+              exact
+            />
+            <PrivateRoute
+              path={routeUrls.CREATE_PROJECT}
+              component={CreateProject}
+              restricted={true}
+              allowed={['admin']}
+              exact
+            />
             <PrivateRoute
               path={routeUrls.ALL_PROJECTS}
               component={Project}

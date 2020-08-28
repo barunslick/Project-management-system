@@ -1,7 +1,11 @@
 import * as userActions from '../actions/user.action';
 import * as errorActions from '../actions/error.action';
 
-const INITIAL_STATE = { authenticationError: {}, projectError: {} };
+const INITIAL_STATE = {
+  authenticationError: {},
+  projectError: {},
+  registerError: {},
+};
 
 /**
  * Sets any error that occurs in app.

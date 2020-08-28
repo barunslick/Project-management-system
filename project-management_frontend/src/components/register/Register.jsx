@@ -8,6 +8,7 @@ import Alert from 'react-bootstrap/Alert';
 import GoBack from '../common/goBack/GoBack';
 
 import roles from '../../constants/roles';
+import { history } from '../../helper/history';
 import * as routeUrls from '../../constants/routeUrls';
 import * as userActions from '../../actions/user.action';
 
@@ -36,6 +37,12 @@ class Login extends Component {
       role: '',
       submitted: false,
     };
+
+    const role = props.user.userDetails.role;
+
+    if (role !== 'admin') {
+      history.push('/dashboard');
+    }
   }
 
   /**
@@ -201,6 +208,7 @@ class Login extends Component {
 function mapStateToProps(state) {
   return {
     error: state.error,
+    user: state.user,
   };
 }
 
@@ -217,6 +225,7 @@ function mapDisptachToProps(dispatch) {
 
 Login.propTypes = {
   error: PropTypes.object,
+  user: PropTypes.object,
   register: PropTypes.func,
 };
 

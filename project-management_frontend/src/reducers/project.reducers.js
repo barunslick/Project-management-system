@@ -61,6 +61,25 @@ function projectActionReducer(state = INITIAL_STATE, action) {
         creatingProject: false,
       };
 
+    case projectActions.PROJECT_USERS_REQUEST:
+      return {
+        ...state,
+        fetchingProjectUsers: true,
+      };
+
+    case projectActions.PROJECT_USERS_REQUEST_SUCCESS:
+      return {
+        ...state,
+        fetchingProjectUsers: false,
+        projectMembers: action.payload.users,
+      };
+
+    case projectActions.PROJECT_USERS_REQUEST_FAIL:
+      return {
+        ...state,
+        fetchingProjectUsers: false,
+      };
+
     case userActions.LOGOUT:
       return {
         ...INITIAL_STATE,

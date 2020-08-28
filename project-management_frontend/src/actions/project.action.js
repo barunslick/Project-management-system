@@ -11,6 +11,10 @@ export const PROJECT_CREATE = 'PROJECT_CREATE';
 export const PROJECT_CREATE_FAIL = 'PROJECT_CREATE_FAIL';
 export const PROJECT_CREATE_SUCCESS = 'PROJECT_CREATE_SUCCESS';
 
+export const PROJECT_USERS_REQUEST = 'PROJECT_USERS_REQUEST';
+export const PROJECT_USERS_REQUEST_FAIL = 'PROJECT_USERS_REQUEST_FAIL';
+export const PROJECT_USERS_REQUEST_SUCCESS = 'PROJECT_USERS_REQUEST_SUCCESS';
+
 export const projectsRequest = () => ({
   type: PROJECT_REQUEST,
 });
@@ -44,11 +48,26 @@ export const projectCreateFail = (msg) => ({
   payload: msg,
 });
 
+export const projectUsersRequest = (projectId) => ({
+  type: PROJECT_USERS_REQUEST,
+  payload: projectId,
+});
+
+export const projectUsersRequestSuccess = (users) => ({
+  type: PROJECT_USERS_REQUEST_SUCCESS,
+  payload: users,
+});
+
+export const projectUsersRequestFail = (msg) => ({
+  type: PROJECT_USERS_REQUEST,
+  payload: msg,
+});
+
 /**
  * Thunk middleware to handle PROJECT request.
  *
  */
-export function getProjects() {
+export const getProjects = () => {
   return async (dispatch) => {
     dispatch(projectsRequest());
     try {
@@ -61,14 +80,14 @@ export function getProjects() {
       dispatch(projectsRequestFail(err));
     }
   };
-}
+};
 
 /**
  * Gets project by id with its project manager.
  *
  * @param {Number} id
  */
-export function getProjectById(id) {
+export const getProjectById = (id) => {
   return async (dispatch) => {
     dispatch(projectsRequest());
     try {
@@ -81,14 +100,14 @@ export function getProjectById(id) {
       dispatch(projectsRequestFail(err));
     }
   };
-}
+};
 
 /**
  * Creates a project.
  *
  * @param {Object} project
  */
-export function createProject(project) {
+export const createProject = (project) => {
   return async (dispatch) => {
     dispatch(projectCreate());
     try {
@@ -101,4 +120,19 @@ export function createProject(project) {
       dispatch(projectCreateFail(err));
     }
   };
-}
+};
+
+export const getProjectMembers = (projectId) => {
+  return async (dispatch) => {
+    dispatch(projectUsersRequest());
+    try {
+      const users = await projectService.getUsersFromProject(projectId);
+
+      dispatch(projectUsersRequestSuccess(users));
+      dispatch(errorActions.clearProjectError());
+    } catch (err) {
+      dispatch(errorActions.projectError(err));
+      dispatch(projectUsersRequest(err));
+    }
+  };
+};
