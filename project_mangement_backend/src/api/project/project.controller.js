@@ -190,9 +190,13 @@ const getAllProjects = async (req, res, next) => {
 
 const getAllUserInProject = async (req, res, next) => {
   try {
-    const usersResult = await db.fetchAllUsersFromProject(req.params.projectId);
+    const usersResult = await db.fetchAllUsersDetailsFromProject(
+      req.params.projectId
+    );
 
-    const users = usersResult ? db.parseQuery(usersResult) : [];
+    const parseresult = db.parseQuery(usersResult);
+
+    const users = parseresult[0].users;
 
     res.json({
       users,
@@ -210,9 +214,33 @@ const getAllUserInProject = async (req, res, next) => {
   }
 };
 
+const getProjectById = async (req, res, next) => {
+  try {
+    const projectResult = await db.fetchProjectByIdWithManager(
+      req.params.projectId
+    );
+
+    const project = projectResult ? db.parseQuery(projectResult) : {};
+    res.json({
+      project,
+    });
+  } catch (err) {
+    logger.info(`Failed to get project, error: ${err.message}`);
+
+    return next(
+      new APIError(
+        err.message,
+        err.statusCode || httpStatus.INTERNAL_SERVER_ERROR,
+        true
+      )
+    );
+  }
+};
+
 module.exports = {
   createProject,
   addUserToProject,
   getAllProjects,
   getAllUserInProject,
+  getProjectById,
 };

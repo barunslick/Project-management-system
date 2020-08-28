@@ -99,7 +99,8 @@ const register = (req, res, next) => {
 
       return db.addUser(user);
     })
-    .then(() => {
+    .then((user) => {
+      logger.info(`User ${db.parseQuery(user).email} added successfully`);
       res.json({
         message: 'User added succesfully',
       });

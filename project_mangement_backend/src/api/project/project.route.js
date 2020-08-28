@@ -23,6 +23,14 @@ router
   );
 
 router
+  .route('/:projectId')
+  .get(
+    authMiddleware.verifyToken,
+    projectMiddleware.isAuthorizedInProject,
+    projectController.getProjectById
+  );
+
+router
   .route('/:projectId/user')
   .get(
     authMiddleware.verifyToken,

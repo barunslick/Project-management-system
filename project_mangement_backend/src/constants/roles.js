@@ -1,6 +1,6 @@
 const ADMIN = 'admin';
-const PROJECT_MANAGER = 'project-manager';
-const TEAM_LEAD = 'team-lead';
+const PROJECT_MANAGER = 'project_manager';
+const TEAM_LEAD = 'team_lead';
 const ENGINEER = 'engineer';
 
 module.exports = {

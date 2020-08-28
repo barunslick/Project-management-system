@@ -5,7 +5,7 @@ module.exports = {
   register: {
     body: Joi.object({
       firstName: Joi.string().required(),
-      middleName: Joi.string(),
+      middleName: Joi.string().allow('').optional(),
       lastName: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required().min(5),
@@ -36,7 +36,7 @@ module.exports = {
   createProject: {
     body: Joi.object({
       name: Joi.string().required(),
-      description: Joi.string(),
+      description: Joi.string().allow('').optional(),
       projectManagerEmail: Joi.string().email().required(),
     }),
   },
@@ -44,8 +44,8 @@ module.exports = {
   createTask: {
     body: Joi.object({
       title: Joi.string().required().max(99),
-      assigneeEmail: Joi.string().email(),
-      deadline: Joi.date().iso(),
+      assigneeEmail: Joi.string().email().optional(),
+      deadline: Joi.date().iso().optional(),
       description: Joi.string().max(999),
     }),
   },

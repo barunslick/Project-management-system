@@ -73,6 +73,12 @@ const fetchProjectById = (projectId) =>
     require: false,
   });
 
+const fetchProjectByIdWithManager = (projectId) =>
+  Project.where({ id: projectId }).fetch({
+    withRelated: ['manager'],
+    require: false,
+  });
+
 const fetchUserFromProject = (projectId, userId) =>
   ProjectUser.where({ project_id: projectId, user_id: userId }).fetch({
     require: false,
@@ -80,6 +86,12 @@ const fetchUserFromProject = (projectId, userId) =>
 
 const fetchAllUsersFromProject = (projectId) =>
   ProjectUser.where({ project_id: projectId }).fetchAll({
+    require: false,
+  });
+
+const fetchAllUsersDetailsFromProject = (projectId) =>
+  Project.where({ id: projectId }).fetchAll({
+    withRelated: ['users'],
     require: false,
   });
 
@@ -169,4 +181,6 @@ module.exports = {
   getUserPassword,
   updateUserPassword,
   fetchAllTasksFromProject,
+  fetchProjectByIdWithManager,
+  fetchAllUsersDetailsFromProject,
 };
