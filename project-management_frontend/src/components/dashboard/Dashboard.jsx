@@ -1,55 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import * as projectActions from '../../actions/project.action';
+import * as routeUrls from '../../constants/routeUrls';
 
 /**
- * Dashboard component to give an overview of all user projects.
+ * Dashboard to view the overall infomration of the system.
  *
- * @class Dashboard
- * @augments {Component}
  */
-class Dashboard extends Component {
-  componentDidMount() {
-    this.props.projectRequest();
-  }
-  /**
-   * Renders the dashboard component.
-   *
-   * @returns
-   * @memberof Dashboard
-   */
-  render() {
-    return <div> Hello welcome</div>;
-  }
-}
-
-/**
- * Sends required data from state to props of component.
- *
- * @param {Object} state
- * @returns
- */
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-    project: state.projects,
-  };
-}
-
-/**
- * Take store.dispatch and map it as props to our component.
- *
- * @param {*} dispatch
- */
-function mapDisptachToProps(dispatch) {
-  return {
-    projectRequest: () => dispatch(projectActions.getProjects()),
-  };
+function Dashboard() {
+  return (
+    <div>
+      <div className="Dashboard">
+        <Link to={routeUrls.ALL_PROJECTS}>View all your projects</Link>
+      </div>
+    </div>
+  );
 }
 
 Dashboard.propTypes = {};
 
-export default connect(mapStateToProps, mapDisptachToProps)(Dashboard);
+export default connect()(Dashboard);

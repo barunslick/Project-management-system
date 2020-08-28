@@ -1,4 +1,5 @@
 import * as config from '../config';
+import authHeader from '../helper/authHeader';
 import handleResponse from '../helper/handleResponse';
 /**
  * Performs login in api endpoint.
@@ -22,6 +23,26 @@ function login(email, password) {
     });
 }
 
+/**
+ * To register a new user.
+ *
+ * @param {Object} user
+ */
+function register(user) {
+  const auth = authHeader();
+
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...auth },
+    body: JSON.stringify(user),
+  };
+
+  return fetch(`${config.API_URL}/auth/register`, requestOptions).then(
+    handleResponse
+  );
+}
+
 export const userService = {
   login,
+  register,
 };

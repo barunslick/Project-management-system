@@ -1,6 +1,9 @@
 import * as projectActions from '../actions/project.action';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  projectsList: {},
+  currentProject: {},
+};
 
 /**
  * Performs action based on given payload ,i.e fetched data from an api and returns new state.
@@ -23,6 +26,14 @@ function projectActionReducer(state = INITIAL_STATE, action) {
         fetchedproject: false,
         fetchingProject: false,
         projectsList: { ...action.payload.projects },
+      };
+
+    case projectActions.PROJECT_REQUEST_BY_ID_SUCCESS:
+      return {
+        ...state,
+        fetchedproject: false,
+        fetchingProject: false,
+        currentProject: { ...action.payload.project },
       };
 
     case projectActions.PROJECT_REQUEST_FAIL:

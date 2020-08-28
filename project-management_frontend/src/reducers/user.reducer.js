@@ -34,6 +34,23 @@ function userActionReducer(state = INITIAL_STATE, action) {
         user: {},
       };
 
+    case userActions.REGISTER_REQUEST:
+      return {
+        ...state,
+        registering: true,
+      };
+
+    case userActions.REGISTER_REQUEST_SUCCESS:
+      return {
+        ...state,
+        registering: false,
+      };
+    case userActions.REGISTER_REQUEST_FAIL:
+      return {
+        ...state,
+        registering: false,
+      };
+
     default:
       return state;
   }

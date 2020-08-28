@@ -1,6 +1,6 @@
 import * as errorActions from '../actions/error.action';
 
-const INITIAL_STATE = { authenticationError: {} };
+const INITIAL_STATE = { authenticationError: {}, projectError: {} };
 
 /**
  * Sets any error that occurs in app.
@@ -21,6 +21,30 @@ function errorActionReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         authenticationError: {},
+      };
+
+    case errorActions.PROJECT_ERROR:
+      return {
+        ...state,
+        projectError: action.payload,
+      };
+
+    case errorActions.CLEAR_PROJECT_ERROR:
+      return {
+        ...state,
+        projectError: {},
+      };
+
+    case errorActions.REGISTER_ERROR:
+      return {
+        ...state,
+        registerError: action.payload,
+      };
+
+    case errorActions.CLEAR_REGISTER_ERROR:
+      return {
+        ...state,
+        registerError: {},
       };
 
     default:

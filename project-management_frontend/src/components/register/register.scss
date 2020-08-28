@@ -1,0 +1,16 @@
+@import '../../style/base';
+
+.registerError {
+  margin: 10px;
+  color: $red;
+}
+
+.registerSuccess {
+  margin: 10px;
+  color: $blue;
+}
+
+.registerForm {
+  margin: 60px auto;
+  max-width: 600px;
+}
